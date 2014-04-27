@@ -4,15 +4,23 @@
 ## Write a short comment describing this function
 
 makeCacheMatrix <- function(x = matrix()) {
-  m <- NULL
+  # cache of inverse
+  inv <- NULL
+  
+  # replate original matrix, clears cache
   set <- function(y) {
     x <<- y
-    m <<- NULL
+    inv <<- NULL
   }
   
+  # get original matrix
   get <- function() x
-  setinv <- function(inv) m <<- inv
-  getinv <- function() m
+  
+  # cache inverse
+  setinv <- function(new_inv) inv <<- new_inv
+  
+  # get inverse
+  getinv <- function() inv
   
   list(set = set, get = get, setinv = setinv, getinv = getinv)
 }
